@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz Application</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="main_parent">
+      <div class="child">
+        <div class="heading_div">
+          <h1>Quiz Application</h1>
+        </div>
+        <div class="question_div">
+          <span id="question"></span>
+        </div>
+        <div class="options_div">
+          <input type="radio" id="opt1" name="ans" class="answer" /><label
+            for="opt1"
+            id="option1"
+          ></label
+          ><br />
+          <input type="radio" id="opt2" name="ans" class="answer" /><label
+            for="opt2"
+            id="option2"
+          ></label
+          ><br />
+          <input type="radio" id="opt3" name="ans" class="answer" /><label
+            for="opt3"
+            id="option3"
+          ></label
+          ><br />
+          <input type="radio" id="opt4" name="ans" class="answer" /><label
+            for="opt4"
+            id="option4"
+          ></label
+          ><br />
+        </div>
+        <div>
+          <button type="submit" id="btn">Next Question</button>
+        </div>
+        <div class="scoreArea" id="scoreAll">
+          <!-- <button class="playBtn">Play Again</button> -->
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    const data = [
+      {
+        ques: "Q1: In Which of the following pairs the plants can be vegetative propagated by leaf buds",
+        one: "Bryophyllum and Kalanchoe",
+        two: "Chrysanthemum and Agave",
+        three: "Agave and Kalanchoe",
+        four: "Asparagus and Bryophyllum",
+        ans: "opt1",
+      },
+      {
+        ques: "Q2: The image formed in a compound microscope is",
+        one: "erect",
+        two: "inverted",
+        three: "sometimes erect, sometimes inverted",
+        four: "none",
+        ans: "opt2",
+      },
+      {
+        ques: "Q3: The lens used in a simple microscope is",
+        one: "concave",
+        two: "convex",
+        three: "cylindrical",
+        four: "none",
+        ans: "opt2",
+      },
+      {
+        ques: "Q4: The elimination of toxic nitrogenous waste and excess water in man is by",
+        one: "Excretion",
+        two: "Circulation",
+        three: "Reproduction",
+        four: "Pollution",
+        ans: "opt1",
+      },
+      {
+        ques: "Q5: The S. I. unit of refractive index is",
+        one: "meter",
+        two: "cm",
+        three: "watt",
+        four: "no unit",
+        ans: "opt4",
+      },
+      {
+        ques: "Q6: The liquid metal is",
+        one: "Bismuth",
+        two: "Magnesium",
+        three: "Mercury",
+        four: "Sodium",
+        ans: "opt3",
+      },
+      {
+        ques: "Q7: Which of the following is not a primary colour",
+        one: "Red",
+        two: "Blue",
+        three: "Green",
+        four: "Yellow",
+        ans: "opt4",
+      },
+      {
+        ques: "Q8: Endothermic reactions are those in which",
+        one: "Heat is evolved",
+        two: "Heat is absorbed",
+        three: "Temperature increases",
+        four: "Light is produced",
+        ans: "opt2",
+      },
+      {
+        ques: "Q9: Which colour of light is deviated least",
+        one: "Red",
+        two: "Blue",
+        three: "Violet",
+        four: "Green",
+        ans: "opt1",
+      },
+      {
+        ques: "Q10: Acid present in gastric juice is",
+        one: "Hydrochloric Acid",
+        two: "Citric Acid",
+        three: "Sulphuric Acid",
+        four: "Acetic Acid",
+        ans: "opt1",
+      },
+      {
+        ques: "Q11: Which blood cells are called 'Soldiers' of the body",
+        one: "WBC",
+        two: "Platelets",
+        three: "RBC",
+        four: "All of the above",
+        ans: "opt1",
+      },
+      {
+        ques: "Q12: What play the most important role in regulating temperature and determining climate on the Earth?",
+        one: "Oceans",
+        two: "Mountains",
+        three: "Deserts",
+        four: "Forests",
+        ans: "opt1",
+      },
+      {
+        ques: "Q13: In plants, the process of pollination enables",
+        one: "Photosynthesis",
+        two: "Fertilization",
+        three: "Gymnosperm",
+        four: "None of these",
+        ans: "opt2",
+      },
+      {
+        ques: "Q14: Which of the following enzyme catalyses the hydrolysis of starch into sugars?",
+        one: "Sucrose",
+        two: "Catalase",
+        three: "Maltase",
+        four: "Amylase",
+        ans: "opt4",
+      },
+      {
+        ques: "Q15: Which of the following is a tissue?",
+        one: "Blood",
+        two: "Lungs",
+        three: "Kidney",
+        four: "Ovary",
+        ans: "opt1",
+      },
+      {
+        ques: "Q16: The position of an element in the Periodic Table is determined by its __________ number.",
+        one: "Electron",
+        two: "Proton",
+        three: "Neutron",
+        four: "Positron",
+        ans: "opt2",
+      },
+      {
+        ques: "Q17: The most abundant element in the Earths crust is",
+        one: "Oxygen",
+        two: "Hydrogen",
+        three: "Carbon Dioxide",
+        four: "Silicon",
+        ans: "opt1",
+      },
+      {
+        ques: "Q18: Each day human body breathe in ________ liters of air.",
+        one: "5,000 to 10,000",
+        two: "10,000 to 15,000",
+        three: "15,000 to 20,000",
+        four: "20,000 to 25,000",
+        ans: "opt3",
+      },
+      {
+        ques: "Q19: The most suitable material for making the core of an electromagnet is :",
+        one: "Steel",
+        two: "Iron",
+        three: "Soft Iron",
+        four: "Aluminium",
+        ans: "opt3",
+      },
+      {
+        ques: "Q20: Which of the following is not attracted by a magnet?",
+        one: "Steel",
+        two: "Cobalt",
+        three: "Brass",
+        four: "Nickel",
+        ans: "opt3",
+      },
+    ];
+    var question = document.getElementById("question");
+    var option1 = document.getElementById("option1");
+    var option2 = document.getElementById("option2");
+    var option3 = document.getElementById("option3");
+    var option4 = document.getElementById("option4");
+    var button = document.getElementById("btn");
+    var answers = document.querySelectorAll(".answer");
+    var scoreArea = document.querySelector("#scoreAll")
+
+    var questionCount = 0;
+    let score = 0;
+
+    function quizApp() {
+      let questionList = data[questionCount];
+
+      question.innerText = questionList.ques;
+      option1.innerText = questionList.one;
+      option2.innerText = questionList.two;
+      option3.innerText = questionList.three;
+      option4.innerText = questionList.four;
+    }
+    quizApp();
+    const getCheckAnswer = () => {
+      let answer;
+      answers.forEach((currentAnswer) => {
+        if (currentAnswer.checked) {
+          answer = currentAnswer.id;
+        }
+      });
+      return answer;
+    };
+    const deSelectAll = () => {
+      answers.forEach((currentAnswer) => {
+        currentAnswer.checked = false;
+      });
+    };
+    button.addEventListener("click", () => {
+      const checkAnswer = getCheckAnswer();
+      console.log(checkAnswer);
+      if (checkAnswer === data[questionCount].ans) {
+        score++;
+      }
+
+      questionCount++;
+
+      deSelectAll();
+
+      if (questionCount + 1 === data.length) {
+        button.innerHTML = "Submit";
+      }
+
+      if (questionCount < data.length) {
+        quizApp();
+      } else {
+        scoreArea.innerHTML = `
+        <h3>Your Score is ${score} / ${data.length} Hurray<h3>
+          <button class="playBtn" onclick="location.reload()">Play Again</button>
+        `;
+        scoreArea.classList.remove("scoreArea");
+      }
+    });
+    const changeButton = () => {
+      button.innerHTML = "Next Question";
+    };
+    changeButton();
+  </script>
+</html>
