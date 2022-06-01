@@ -61,14 +61,18 @@ margin-left: 20px;
     position: absolute;
     text-align: center;
     width: 100%;
-    background-color: #fff;
+    /* background-color: #fff; */
+    background-image: url("happy.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
     height: 100%;
     top: 0;
 
 }
 #scoreAll h3{
     font-size: 32px;
-    color: black;
+    color: #fff;
     text-align: center;
 }
 .scoreArea{
