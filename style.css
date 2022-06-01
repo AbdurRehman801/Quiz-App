@@ -1,8 +1,8 @@
 .main_parent{
-    height: 720px;
+    height: 100vh;
     width: 100vw;
     background-repeat: no-repeat;
-    background-position: center;
+    /* background-position: center; */
     background-size: cover;
     /* background-color: #7D1E6A; */
     background-image: url("background.jpg");
@@ -12,6 +12,7 @@
 }
 .child{
     height: 60%;
+    padding: 0 15px;
     width: 50%;
     background-color: #eee8aa;
     border-radius: 5px;
@@ -106,6 +107,9 @@ margin-left: 20px;
         align-items: center;
         padding-bottom: 10px;
     }
+    .options_div label{
+        font-size: 15px;
+    }
   }
   @media only screen and (max-width: 800px) {
     .child{
@@ -127,6 +131,9 @@ margin-left: 20px;
         align-items: center;
         padding-bottom: 10px;
     }
+    .options_div label{
+        font-size: 15px;
+    }
   }
   @media only screen and (max-width: 1200px) {
     .child{
@@ -147,5 +154,33 @@ margin-left: 20px;
         display: flex;
         align-items: center;
         padding-bottom: 10px;
+    }
+  }
+  @media only screen and (max-width: 400px) {
+    .child{
+        height: 70%;
+        width: 85%;
+        background-color: #eee8aa;
+        padding: 0 15px;
+        border-radius: 5px;
+        position: relative;
+        /* justify-content: center; */
+        /* align-items: center; */
+    }
+    .question_div{
+        margin-top: 10px;
+        margin-bottom: 10px;
+        height: 70px;
+        width: 100%;
+        /* display: flex; */
+        /* flex: 1;
+        flex-wrap: wrap; */
+        /* border: 2px solid black; */
+        display: flex;
+        align-items: center;
+        padding-bottom: 10px;
+    }
+    .options_div label{
+        font-size: 15px;
     }
   }
